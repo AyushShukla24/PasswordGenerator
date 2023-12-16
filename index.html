@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <script src="https://cdn.tailwindcss.com"></script> -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+          theme: {
+            extend: {
+              colors: {
+                clifford: '#da373d',
+              }
+            }
+          }
+        }
+      </script>
+       <style type="text/tailwindcss">
+        @layer utilities {
+          .content-auto {
+            content-visibility: auto;
+          }
+        }
+      </style>
+       <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
+       <style>
+           .disactive{
+               opacity: 0;
+            }
+            .active{
+                opacity: 1;
+            }
+        .bbg{
+            background:linear-gradient(231deg, rgba(22, 6, 40, 1) 0%, rgba(52, 28, 79, 1) 50%, rgba(88, 7, 125, 1) 100%);
+        }
+        .shed{
+            background-color: rgb(204, 204, 204);
+            box-shadow:  rgb(204, 204, 204) 0px 0px 12px 1px;
+        }
+        .ff{
+            font-family: 'League Spartan', sans-serif;
+        }
+        #slider{
+            appearance: none;
+            width: 100%;
+            border-radius: 1rem;
+            background-color: #331C4E;
+            cursor: pointer;
+            height: 0.75rem;
+            margin-top: 2rem;
+            background-image: linear-gradient(#BC15F3,#BC15F3);
+        }
+        #slider::-webkit-slider-thumb{
+            appearance: none;
+            height: 2rem;
+            width: 2rem;
+            border-radius: 50%;
+            background-color: #FFE53D;
+            cursor: pointer;
+            margin-top: -3px;
+            box-sizing: 0px 0px 20px 0px rgba(255,229,61,0.50);
+            transition: all 100ms ease-in ;
+        }
+        #slider:focus{
+            border: 2px solid #FFE53D;
+        }
+        #slider::-webkit-slider-thumb:hover{
+            border: 2px solid #FFE53D;
+            background-color: #150528;
+            box-shadow: 0px 0px 25px 5px rgba(255,229,61,0.80);
+        }
+       </style>
+       
+</head>
+<body>
+
+    <div class="relative w-[100vw] h-[100vh] flex justify-center items-center font-family: 'League Spartan', sans-serif; bbg">
+        <!-- box -->
+        <div class="flex flex-col max-w-[450px] gap-5 w-11/12">
+            <h1 class="text-center text-white tracking-widest opacity-[0.75] leading-5 text-[1.7rem] ff font-bold">PASSWORD GENERATOR</h1>
+            <div class="flex flex-col gap-3">
+                <div class="flex relative pt-[0.3rem]">
+                    <input type="text" readonly id="passwordContent" placeholder="PASSWORD" class="w-[100%] border-b-[0.35rem] border-t-0 border-l-0 border-r-0 border-[#58077D] bg-[#160628] focus:border-none pt-[1.15rem] rounded-[1rem] pb-[1.15rem] pl-[1rem] pr-[3.25rem] text-[1.5rem] leading-[30px] tracking-[1px] font-semibold placeholder:opacity-[0.6] placeholder:text-[#FFE53D] text-[#FFE53D]">
+                    <div class="flex flex-col right-[1.5rem] top-[35%] absolute">
+                        <span id="c" class="absolute text-[1.25rem] py-[3px] px-[6px] translate-y-[-110%] translate-x-[-25%] transition-all rounded-[1rem] duration-[1.5s] ease-in-out text-[#FFE53D] bg-[#871C9C] disactive origin-bottom"></span>
+                        <img width="24px" height="24px" class="cursor-pointer" id="clk" src="https://codehelp-password-generator.netlify.app/assets/copy.svg" alt="">
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex flex-col bg-[#160628] text-white w-[100%] p-[2rem] rounded-[1rem] border-b-[0.35rem] border-t-0 border-l-0 border-r-0 border-[#58077D]">
+                <div class="flex justify-between text-center">
+                    <p class="text-white text-[1.3rem] ff">Password Length</p>
+                    <p id="sliderValue" class="text-[1.5rem] font-semibold text-[#FFE53D]">0</p>
+                </div>
+
+                <input type="range" min="1" max="20" class="" step="1" id="slider">
+                <div class="flex flex-col">
+                    <div class="flex mx-0 gap-x-[1rem] items-center mt-[2.5rem] aa">
+                        <input id="upper" type="checkbox" class="radio relative focus:bg-[#00E0D1]  an w-[20px] h-[20px] border-[1px] cursor-pointer rounded-[0.35rem] border-[#00E0D1] bg-[#160628]">
+                        <label for="upper" class="leading-[0.75px] text-[1.1rem] tracking-wider ff">Include Uppercase Letters</label>
+                    </div>
+                    <div class="flex mt-[1.1rem] mx-0 gap-x-[1rem] items-center">
+                        <input id="lower" type="checkbox" class="radio an focus:bg-[#00E0D1]  w-[20px] h-[20px] border-[1px] cursor-pointer rounded-[0.35rem] border-[#00E0D1] bg-[#160628]">
+                        <label for="lower" class="leading-[0.75px] text-[1.1rem] tracking-wider ff">Include LowerCase Letters</label>
+                    </div>
+                    <div class="flex mt-[1.1rem] mx-0 gap-x-[1rem] items-center">
+                        <input id="num" type="checkbox" class="radio an focus:bg-[#00E0D1]  w-[20px] h-[20px] border-[1px] cursor-pointer rounded-[0.35rem] border-[#00E0D1] bg-[#160628]">
+                       <label for="num" class="leading-[0.75px] text-[1.1rem] tracking-wider ff">Include Numbers</label>
+                    </div>
+                    <div class="flex mt-[1.1rem] mx-0 gap-x-[1rem] items-center">
+                        <input id="symb" type="checkbox" class="radio an focus:bg-[#00E0D1] w-[20px] h-[20px] border-[1px] cursor-pointer rounded-[0.35rem] border-[#00E0D1] bg-[#160628]">
+                        <label for="symb" class="leading-[0.75px] text-[1.1rem] tracking-wider ff">Include Symbols</label>
+                    </div>
+        
+                <div class="flex justify-between mt-[1rem] mb-[1rem]">
+                    <p class="text-[1.5rem] ff">Strength</p>
+                    <div id="colorChange" class="w-[1.5rem] h-[1.5rem] duration-[2.5rem] ease-in-out shed rounded-full"></div>
+                </div>
+                </div>
+                <button id="Gbtn" class="py-[1rem] mt-[1rem] cursor-pointer text-center rounded-[0.75rem] border-b-[0.35rem] border-t-0 border-l-0 border-r-0 font-semibold text-[1.25rem] tracking-wider border-[#FFE53D] text-[#FFE53D] ff bg-[#BC15F4]">GENERATE PASSWORD</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="index.js"></script>
+    
+</body>
+</html>
